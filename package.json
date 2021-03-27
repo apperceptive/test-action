@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0"
+  },
+  "name": "test-action",
+  "description": "This action is a test for a basic apperceptive workflow.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apperceptive/test-action.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apperceptive/test-action/issues"
+  },
+  "homepage": "https://github.com/apperceptive/test-action#readme"
+}
