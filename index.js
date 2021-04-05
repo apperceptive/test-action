@@ -16,7 +16,7 @@ try {
   (async () => {
     // Creat a directory and a file within it.
     await fs.mkdir("foobar");
-    await fs.writeFileSync("foobar/batshit", "test file");
+    await fs.writeFile("foobar/batshit", "test file");
 
     const uploadResponse = await artifact.uploadArtifact("my-artifact", ["foobar/batshit"], {});
   })();
