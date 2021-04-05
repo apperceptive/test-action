@@ -18,7 +18,14 @@ try {
     await fs.mkdir("foobar");
     await fs.writeFile("foobar/batshit", "test file");
 
-    const uploadResponse = await artifact.uploadArtifact("my-artifact", ["foobar/batshit"], {});
+    const artifactClient = artifact.create();
+
+    const uploadResponse = await artifactClient.uploadArtifact(
+      "my-artifact",
+      ["foobar/batshit"],
+      ".",
+      {}
+    );
   })();
 } catch (error) {
   core.setFailed(error.message);
