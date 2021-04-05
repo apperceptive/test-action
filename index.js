@@ -1,6 +1,6 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
-const artifact = reuquire("@actions/artifact");
+const artifact = require("@actions/artifact");
 const fs = require("fs");
 
 try {
