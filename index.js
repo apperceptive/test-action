@@ -3,20 +3,23 @@ const github = require("@actions/github");
 const artifact = require("@actions/artifact");
 const fs = require("fs").promises;
 
-try {
-  // `who-to-greet` input defined in action metadata file
-  const config = core.getInput("config");
-  console.log("config is", config);
+async function main() {
+  try {
+    // `who-to-greet` input defined in action metadata file
+    const config = core.getInput("config");
+    console.log("config is", config);
 
-  const nameToGreet = core.getInput("who-to-greet");
-  console.log(`Hello ${nameToGreet}!`);
-  const time = new Date().toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2);
-  // console.log(`The event payload: ${payload}`);
+    const configFile = fs.readFile(config);
+    console.log(configFile.toString());
 
-  (async () => {
+    const nameToGreet = core.getInput("who-to-greet");
+    console.log(`Hello ${nameToGreet}!`);
+    const time = new Date().toTimeString();
+    core.setOutput("time", time);
+    // Get the JSON webhook payload for the event that triggered the workflow
+    const payload = JSON.stringify(github.context.payload, undefined, 2);
+    // console.log(`The event payload: ${payload}`);
+
     // Creat a directory and a file within it.
     await fs.mkdir("foobar");
     await fs.writeFile("foobar/batshit", "test file");
@@ -29,7 +32,9 @@ try {
       ".",
       {}
     );
-  })();
-} catch (error) {
-  core.setFailed(error.message);
+  } catch (error) {
+    core.setFailed(error.message);
+  }
 }
+
+main();
