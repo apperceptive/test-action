@@ -1,7 +1,7 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
 const artifact = require("@actions/artifact");
-const fs = require("fs/promises");
+const fs = require("fs").promises;
 
 try {
   // `who-to-greet` input defined in action metadata file
