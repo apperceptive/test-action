@@ -17,7 +17,9 @@ try {
   fs.mkdir("foobar");
   fs.writeFileSync("foobar/batshit", "test file");
 
-  const uploadResponse = await artifact.uploadArtifact("my-artifact", ["foobar/batshit"], {});
+  (async () => {
+    const uploadResponse = await artifact.uploadArtifact("my-artifact", ["foobar/batshit"], {});
+  })();
 } catch (error) {
   core.setFailed(error.message);
 }
