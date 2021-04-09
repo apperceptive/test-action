@@ -9,7 +9,7 @@ async function main() {
     const config = core.getInput("config");
     console.log("config is", config);
 
-    const configFile = fs.readFile(config);
+    const configFile = await fs.readFile(config);
     console.log(configFile.toString());
 
     const nameToGreet = core.getInput("who-to-greet");
